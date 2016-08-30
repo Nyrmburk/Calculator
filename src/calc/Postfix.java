@@ -159,11 +159,14 @@ public class Postfix {
 					
 				} else if (leftToken instanceof Bracket && !((Bracket) leftToken).left) {
 					
-					if (!(currentToken instanceof Bracket && !((Bracket) currentToken).left)) {
+					if (!(currentToken instanceof Operator)) {
 						
-						flipped.add(currentToken);
-						flipped.push(new Operator(Operator.Operators.MULTIPLY));
-						continue;
+						if (!(currentToken instanceof Bracket && !((Bracket) currentToken).left)) {
+							
+							flipped.add(currentToken);
+							flipped.push(new Operator(Operator.Operators.MULTIPLY));
+							continue;
+						}
 					}
 				}
 			}

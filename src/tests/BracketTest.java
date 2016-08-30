@@ -52,6 +52,17 @@ public class BracketTest {
 	}
 	
 	@Test
+	public void bracketDivisionNoMultiplication() {
+
+
+		Token[] infix = shuntingYard.tokenize("(" + value + ")/" + value);
+		Token[] postfix = Postfix.precedenceSort(infix);
+		double answer = Postfix.interpret(postfix);
+		
+		assertEquals(answer, value / value, DELTA);
+	}
+	
+	@Test
 	public void bracketNegative() {
 
 
